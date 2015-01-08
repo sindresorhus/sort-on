@@ -1,0 +1,41 @@
+{
+  "name": "sort-on",
+  "version": "0.0.0",
+  "description": "Sort an array on an object property",
+  "license": "MIT",
+  "repository": "sindresorhus/sort-on",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "sort",
+    "sorting",
+    "array",
+    "arr",
+    "by",
+    "obj",
+    "object",
+    "prop",
+    "property",
+    "dot",
+    "path",
+    "get"
+  ],
+  "dependencies": {
+    "dot-prop": "^1.0.0"
+  },
+  "devDependencies": {
+    "ava": "0.0.4"
+  }
+}
