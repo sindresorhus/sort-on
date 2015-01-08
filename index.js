@@ -24,7 +24,7 @@ module.exports = function (arr, prop) {
 				return a.localeCompare(b);
 			}
 
-			return a > b ? -1 : 1;
+			return a > b ? -1 : a < b ? 1 : 0;
 		});
 	});
 
