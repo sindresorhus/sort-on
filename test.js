@@ -10,6 +10,12 @@ test(function (t) {
 	], 'foo')[0].foo === 'a');
 
 	t.assert(sortOn([
+		{foo: 2},
+		{foo: 1},
+		{foo: 3}
+	], 'foo')[0].foo === 1);
+
+	t.assert(sortOn([
 		{foo: 'b', bar: 'b'},
 		{foo: 'a', bar: 'b'},
 		{foo: 'a', bar: 'a'},
