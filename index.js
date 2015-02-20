@@ -28,7 +28,7 @@ module.exports = function (arr, prop) {
 				return 0;
 			}
 
-			return a > b ? -1 : 1;
+			return a < b ? -1 : 1;
 		});
 	});
 
