@@ -1,6 +1,6 @@
 {
   "name": "sort-on",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Sort an array on an object property",
   "license": "MIT",
   "repository": "sindresorhus/sort-on",
