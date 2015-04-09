@@ -37,6 +37,20 @@ test(function (t) {
 	})[0].foo === 'a');
 
 	t.assert(sortOn([
+		{foo: 'b', bar: 'b'},
+		{foo: 'a', bar: 'b'},
+		{foo: 'a', bar: 'a'},
+		{foo: 'c', bar: 'c'}
+	], [
+		function (prop) {
+			return prop.foo;
+		},
+		function (prop) {
+			return prop.bar;
+		}
+	])[0].bar === 'a');
+
+	t.assert(sortOn([
 		{bar: 'b'},
 		{foo: 'b'},
 		{foo: 'a'}
