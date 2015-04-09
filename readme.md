@@ -49,7 +49,7 @@ Type: `array`
 #### property
 
 *Required*  
-Type: `string`, `function` or `array` of the former
+Type: `string`, `function` or `array` of either
 
 The string can be a [dot path](https://github.com/sindresorhus/dot-prop) to a nested object property.
 

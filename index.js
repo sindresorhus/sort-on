@@ -11,8 +11,8 @@ module.exports = function (arr, prop) {
 	(Array.isArray(prop) ? prop : [prop]).forEach(function (el) {
 		arr.sort(function (a, b) {
 			if (typeof el === 'function') {
-				a = prop(a);
-				b = prop(b);
+				a = el(a);
+				b = el(b);
 			}
 
 			if (typeof el === 'string') {
