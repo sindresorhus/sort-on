@@ -54,6 +54,11 @@ Type: `string`, `function` or `array` of either
 The string can be a [dot path](https://github.com/sindresorhus/dot-prop) to a nested object property.
 
 
+## Related
+
+- [compare-func](https://github.com/stevemao/compare-func) - Get a compare function for array to sort
+
+
 ## License
 
 MIT © [Sindre Sorhus](http://sindresorhus.com)
