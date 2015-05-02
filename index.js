@@ -1,5 +1,5 @@
 'use strict';
-var dotProp = require('dot-prop');
+var dotPropGet = require('dot-prop').get;
 
 module.exports = function (arr, prop) {
 	if (!Array.isArray(arr)) {
@@ -16,8 +16,8 @@ module.exports = function (arr, prop) {
 			}
 
 			if (typeof el === 'string') {
-				a = dotProp(a, el);
-				b = dotProp(b, el);
+				a = dotPropGet(a, el);
+				b = dotPropGet(b, el);
 			}
 
 			if (typeof a === 'string' && typeof b === 'string') {
