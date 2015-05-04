@@ -50,11 +50,19 @@ test(function (t) {
 		}
 	])[0].bar === 'a');
 
-	t.assert(sortOn([
+	var arr = sortOn([
 		{bar: 'b'},
 		{foo: 'b'},
 		{foo: 'a'}
-	], 'foo')[0].foo === 'a');
+	], 'foo');
+
+	arr.some(function (el) {
+		var foo = el.foo;
+		if (foo) {
+			t.assert(foo === 'a');
+			return true;
+		}
+	});
 
 	t.assert(sortOn([
 		{foo: 'b', bar: 'a'},

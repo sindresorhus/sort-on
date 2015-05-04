@@ -33,7 +33,7 @@
     "get"
   ],
   "dependencies": {
-    "dot-prop": "^2.0.0"
+    "compare-func": "^1.2.0"
   },
   "devDependencies": {
     "ava": "0.0.4"
