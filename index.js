@@ -1,36 +1,44 @@
 'use strict';
-var dotPropGet = require('dot-prop').get;
+var dotProp = require('dot-prop');
+var dotPropGet = dotProp.get;
 
 module.exports = function (arr, prop) {
 	if (!Array.isArray(arr)) {
 		throw new TypeError('Expected an array');
 	}
 
-	arr = arr.slice();
+	return arr.slice().sort(function (a, b) {
+		var ret = 0;
 
-	(Array.isArray(prop) ? prop : [prop]).forEach(function (el) {
-		arr.sort(function (a, b) {
+		(Array.isArray(prop) ? prop : [prop]).forEach(function (el) {
+			var x = a;
+			var y = b;
+
 			if (typeof el === 'function') {
-				a = el(a);
-				b = el(b);
+				x = el(x);
+				y = el(y);
 			}
 
 			if (typeof el === 'string') {
-				a = dotPropGet(a, el);
-				b = dotPropGet(b, el);
+				x = dotPropGet(x, el);
+				y = dotPropGet(y, el);
 			}
 
-			if (typeof a === 'string' && typeof b === 'string') {
-				return a.localeCompare(b);
+			// lower priority for each prop
+			ret++;
+
+			if (x === y) {
+				return;
 			}
 
-			if (a === b) {
-				return 0;
+			if (typeof x === 'string' && typeof y === 'string') {
+				ret += x.localeCompare(y);
+				return;
 			}
 
-			return a < b ? -1 : 1;
+			ret += x < y ? -1 : 1;
 		});
-	});
 
-	return arr;
+		return ret;
+	});
 };
