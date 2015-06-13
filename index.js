@@ -1,5 +1,6 @@
 'use strict';
 var dotProp = require('dot-prop');
+var arrify = require('arrify');
 var dotPropGet = dotProp.get;
 
 module.exports = function (arr, prop) {
@@ -10,7 +11,7 @@ module.exports = function (arr, prop) {
 	return arr.slice().sort(function (a, b) {
 		var ret = 0;
 
-		(Array.isArray(prop) ? prop : [prop]).some(function (el) {
+		arrify(prop).some(function (el) {
 			var x;
 			var y;
 
