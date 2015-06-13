@@ -10,33 +10,37 @@ module.exports = function (arr, prop) {
 	return arr.slice().sort(function (a, b) {
 		var ret = 0;
 
-		(Array.isArray(prop) ? prop : [prop]).forEach(function (el) {
-			var x = a;
-			var y = b;
+		(Array.isArray(prop) ? prop : [prop]).some(function (el) {
+			var x;
+			var y;
 
 			if (typeof el === 'function') {
-				x = el(x);
-				y = el(y);
-			}
-
-			if (typeof el === 'string') {
-				x = dotPropGet(x, el);
-				y = dotPropGet(y, el);
-			}
-
-			// lower priority for each prop
-			ret++;
-
-			if (x === y) {
-				return;
+				x = el(a);
+				y = el(b);
+			} else if (typeof el === 'string') {
+				x = dotPropGet(a, el);
+				y = dotPropGet(b, el);
+			} else {
+				x = a;
+				y = b;
 			}
 
 			if (typeof x === 'string' && typeof y === 'string') {
-				ret += x.localeCompare(y);
-				return;
+				ret = x.localeCompare(y);
+				if (ret !== 0) {
+					return true;
+				}
 			}
 
-			ret += x < y ? -1 : 1;
+			if (x === y) {
+				ret = 0;
+			} else if (x < y) {
+				ret = -1;
+				return true;
+			} else if (x > y) {
+				ret = 1;
+				return true;
+			}
 		});
 
 		return ret;
