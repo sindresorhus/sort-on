@@ -92,11 +92,14 @@ test(function (t) {
 		}
 	])[0].bar === 2);
 
-	t.assert(sortOn([
+	var sorted = sortOn([
 		{bar: 'b'},
 		{foo: 'b'},
 		{foo: 'a'}
-	], 'foo')[0].foo === 'a');
+	], 'foo');
+
+	// {bar: 'b'} is not sorted so it might be the first or the second element
+	t.assert(sorted[0].foo || sorted[1].foo === 'a');
 
 	t.assert(sortOn([
 		{foo: 'b', bar: 'a'},
