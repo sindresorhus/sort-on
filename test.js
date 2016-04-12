@@ -88,4 +88,29 @@ test(t => {
 		{foo: 'a', bar: 'b'},
 		{foo: 'c', bar: 'c'}
 	], ['foo', 'bar'])[0].bar, 'b');
+
+	t.is(fn([
+		{foo: 'b'},
+		{foo: 'a'},
+		{foo: 'c'}
+	], '-foo')[0].foo, 'c');
+
+	t.is(fn([
+		{foo: 'b', bar: 'b'},
+		{foo: 'a', bar: 'b'},
+		{foo: 'a', bar: 'a'},
+		{foo: 'c', bar: 'c'}
+	], ['foo', '-bar'])[0].bar, 'b');
+
+	t.is(fn([
+		{foo: {bar: 'b'}},
+		{foo: {bar: 'a'}},
+		{foo: {bar: 'c'}}
+	], '-foo.bar')[0].foo.bar, 'c');
+
+	t.is(fn([
+		{foo: {bar: 2}},
+		{foo: {bar: 1}},
+		{foo: {bar: 3}}
+	], '-foo.bar')[0].foo.bar, 3);
 });

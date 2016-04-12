@@ -19,9 +19,17 @@ var sortOn = require('sort-on');
 sortOn([{x: 'b'}, {x: 'a'}, {x: 'c'}], 'x');
 //=> [{x: 'a'}, {x: 'b'}, {x: 'c'}]
 
+// sort descending by an object property
+sortOn([{x: 'b'}, {x: 'a'}, {x: 'c'}], '-x');
+//=> [{x: 'c'}, {x: 'b'}, {x: 'a'}]
+
 // sort by a nested object property
 sortOn([{x: {y: 'b'}}, {x: {y: 'a'}}], 'x.y');
 //=> [{x: {y: 'a'}}, {x: {y: 'b'}}]
+
+// sort descending by a nested object property
+sortOn([{x: {y: 'b'}}, {x: {y: 'a'}}], '-x.y');
+//=> [{x: {y: 'b'}, {x: {y: 'a'}}}]
 
 // sort by the `x` propery, then `y`
 sortOn([{x: 'c', y: 'c'}, {x: 'b', y: 'a'}, {x: 'b', y: 'b'}], ['x', 'y']);
@@ -51,7 +59,7 @@ Type: `array`
 *Required*  
 Type: `string`, `function` or `array` of either
 
-The string can be a [dot path](https://github.com/sindresorhus/dot-prop) to a nested object property.
+The string can be a [dot path](https://github.com/sindresorhus/dot-prop) to a nested object property. Prepend it with `-` to sort it by descending order.
 
 
 ## License
