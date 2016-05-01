@@ -14,11 +14,14 @@ module.exports = function (arr, prop) {
 		arrify(prop).some(function (el) {
 			var x;
 			var y;
+			var desc;
 
 			if (typeof el === 'function') {
 				x = el(a);
 				y = el(b);
 			} else if (typeof el === 'string') {
+				desc = el.charAt(0) === '-';
+				el = desc ? el.substring(1) : el;
 				x = dotPropGet(a, el);
 				y = dotPropGet(b, el);
 			} else {
@@ -32,8 +35,13 @@ module.exports = function (arr, prop) {
 			}
 
 			if (typeof x === 'string' && typeof y === 'string') {
-				ret = x.localeCompare(y);
+				ret = desc ? y.localeCompare(x) : x.localeCompare(y);
 				return ret !== 0;
+			}
+
+			if (desc) {
+				ret = x < y ? 1 : -1;
+				return true;
 			}
 
 			ret = x < y ? -1 : 1;
