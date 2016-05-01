@@ -21,7 +21,7 @@ module.exports = function (arr, prop) {
 				y = el(b);
 			} else if (typeof el === 'string') {
 				desc = el.charAt(0) === '-';
-				el = desc ? el.substring(1) : el;
+				el = desc ? el.slice(1) : el;
 				x = dotPropGet(a, el);
 				y = dotPropGet(b, el);
 			} else {
@@ -41,10 +41,10 @@ module.exports = function (arr, prop) {
 
 			if (desc) {
 				ret = x < y ? 1 : -1;
-				return true;
+			} else {
+				ret = x < y ? -1 : 1;
 			}
 
-			ret = x < y ? -1 : 1;
 			return true;
 		});
 

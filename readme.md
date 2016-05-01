@@ -13,7 +13,7 @@ $ npm install --save sort-on
 ## Usage
 
 ```js
-var sortOn = require('sort-on');
+const sortOn = require('sort-on');
 
 // sort by an object property
 sortOn([{x: 'b'}, {x: 'a'}, {x: 'c'}], 'x');
@@ -36,32 +36,28 @@ sortOn([{x: 'c', y: 'c'}, {x: 'b', y: 'a'}, {x: 'b', y: 'b'}], ['x', 'y']);
 //=> [{x: 'b', y: 'a'}, {x: 'b', y: 'b'}, {x: 'c', y: 'c'}]
 
 // sort by the returned value
-sortOn([{x: 'b'}, {x: 'a'}, {x: 'c'}], function (el) {
-	return el.x;
-});
+sortOn([{x: 'b'}, {x: 'a'}, {x: 'c'}], el => el.x);
 //=> [{x: 'a'}, {x: 'b'}, {x: 'c'}]
 ```
 
 
 ## API
 
-### sortOn(array, property)
+### sortOn(input, property)
 
 Returns a new sorted array.
 
-#### array
+#### input
 
-*Required*  
-Type: `array`
+Type: `Array`
 
 #### property
 
-*Required*  
-Type: `string`, `function` or `array` of either
+Type: `String` `Array<String>` `Function`
 
-The string can be a [dot path](https://github.com/sindresorhus/dot-prop) to a nested object property. Prepend it with `-` to sort it by descending order.
+The string can be a [dot path](https://github.com/sindresorhus/dot-prop) to a nested object property. Prepend it with `-` to sort it in descending order.
 
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)
