@@ -37,6 +37,6 @@
     "dot-prop": "^2.0.0"
   },
   "devDependencies": {
-    "ava": "*"
+    "ava": "^0.17.0"
   }
 }
