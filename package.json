@@ -10,7 +10,7 @@
     "url": "sindresorhus.com"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "scripts": {
     "test": "xo && ava"
@@ -34,10 +34,10 @@
   ],
   "dependencies": {
     "arrify": "^1.0.0",
-    "dot-prop": "^2.0.0"
+    "dot-prop": "^4.1.1"
   },
   "devDependencies": {
-    "ava": "^0.17.0",
-    "xo": "^0.16.0"
+    "ava": "*",
+    "xo": "*"
   }
 }

@@ -53,7 +53,7 @@ Type: `Array`
 
 #### property
 
-Type: `String` `Array<String>` `Function`
+Type: `string` `string[]` `Function`
 
 The string can be a [dot path](https://github.com/sindresorhus/dot-prop) to a nested object property. Prepend it with `-` to sort it in descending order.
 

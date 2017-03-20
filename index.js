@@ -1,21 +1,21 @@
 'use strict';
-var dotProp = require('dot-prop');
-var arrify = require('arrify');
+const dotProp = require('dot-prop');
+const arrify = require('arrify');
 
-var dotPropGet = dotProp.get;
+const dotPropGet = dotProp.get;
 
-module.exports = function (arr, prop) {
+module.exports = (arr, prop) => {
 	if (!Array.isArray(arr)) {
 		throw new TypeError('Expected an array');
 	}
 
-	return arr.slice().sort(function (a, b) {
-		var ret = 0;
+	return arr.slice().sort((a, b) => {
+		let ret = 0;
 
-		arrify(prop).some(function (el) {
-			var x;
-			var y;
-			var desc;
+		arrify(prop).some(el => {
+			let x;
+			let y;
+			let desc;
 
 			if (typeof el === 'function') {
 				x = el(a);
