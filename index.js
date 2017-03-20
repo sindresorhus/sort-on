@@ -34,6 +34,16 @@ module.exports = function (arr, prop) {
 				return false;
 			}
 
+			if (y === null) {
+				ret = desc ? 1 : -1;
+				return true;
+			}
+
+			if (x === null) {
+				ret = desc ? -1 : 1;
+				return true;
+			}
+
 			if (typeof x === 'string' && typeof y === 'string') {
 				ret = desc ? y.localeCompare(x) : x.localeCompare(y);
 				return ret !== 0;
