@@ -117,13 +117,12 @@ test(t => {
 	t.is(m([
 		{foo: 'a'},
 		{foo: null},
-		{foo: 'b'},
-	], 'foo')[0].foo, 'a');
+		{foo: 'b'}
+	], 'foo')[2].foo, null);
 
 	t.is(m([
 		{foo: 'a'},
 		{foo: null},
-		{foo: 'b'},
+		{foo: 'b'}
 	], '-foo')[0].foo, null);
-
 });

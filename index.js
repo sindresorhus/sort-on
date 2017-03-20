@@ -1,6 +1,7 @@
 'use strict';
 var dotProp = require('dot-prop');
 var arrify = require('arrify');
+
 var dotPropGet = dotProp.get;
 
 module.exports = function (arr, prop) {
