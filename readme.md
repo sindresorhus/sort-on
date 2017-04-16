@@ -58,6 +58,11 @@ Type: `string` `string[]` `Function`
 The string can be a [dot path](https://github.com/sindresorhus/dot-prop) to a nested object property. Prepend it with `-` to sort it in descending order.
 
 
+## Related
+
+- [compare-func](https://github.com/stevemao/compare-func) - Get a compare function for array to sort
+
+
 ## License
 
 MIT © [Sindre Sorhus](https://sindresorhus.com)
