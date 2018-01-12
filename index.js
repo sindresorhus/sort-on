@@ -40,7 +40,7 @@ module.exports = (arr, prop) => {
 				return true;
 			}
 
-			if (x === null  || x === '') {
+			if (x === null || x === '') {
 				ret = desc ? -1 : 1;
 				return true;
 			}
