@@ -125,4 +125,16 @@ test(t => {
 		{foo: null},
 		{foo: 'b'}
 	], '-foo')[0].foo, null);
+
+	t.is(m([
+		{foo: 'a'},
+		{foo: ''},
+		{foo: 'b'}
+	], 'foo')[2].foo, '');
+
+	t.is(m([
+		{foo: 'a'},
+		{foo: ''},
+		{foo: 'b'}
+	], '-foo')[0].foo, '');
 });
