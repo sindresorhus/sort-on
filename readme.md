@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save sort-on
+$ npm install sort-on
 ```
 
 
