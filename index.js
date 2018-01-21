@@ -35,12 +35,12 @@ module.exports = (arr, prop) => {
 				return false;
 			}
 
-			if (y === null) {
+			if (y !== 0 && !y) {
 				ret = desc ? 1 : -1;
 				return true;
 			}
 
-			if (x === null) {
+			if (x !== 0 && !x) {
 				ret = desc ? -1 : 1;
 				return true;
 			}
