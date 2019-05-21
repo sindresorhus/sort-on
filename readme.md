@@ -15,27 +15,27 @@ $ npm install sort-on
 ```js
 const sortOn = require('sort-on');
 
-// sort by an object property
+// Sort by an object property
 sortOn([{x: 'b'}, {x: 'a'}, {x: 'c'}], 'x');
 //=> [{x: 'a'}, {x: 'b'}, {x: 'c'}]
 
-// sort descending by an object property
+// Sort descending by an object property
 sortOn([{x: 'b'}, {x: 'a'}, {x: 'c'}], '-x');
 //=> [{x: 'c'}, {x: 'b'}, {x: 'a'}]
 
-// sort by a nested object property
+// Sort by a nested object property
 sortOn([{x: {y: 'b'}}, {x: {y: 'a'}}], 'x.y');
 //=> [{x: {y: 'a'}}, {x: {y: 'b'}}]
 
-// sort descending by a nested object property
+// Sort descending by a nested object property
 sortOn([{x: {y: 'b'}}, {x: {y: 'a'}}], '-x.y');
 //=> [{x: {y: 'b'}, {x: {y: 'a'}}}]
 
-// sort by the `x` propery, then `y`
+// Sort by the `x` propery, then `y`
 sortOn([{x: 'c', y: 'c'}, {x: 'b', y: 'a'}, {x: 'b', y: 'b'}], ['x', 'y']);
 //=> [{x: 'b', y: 'a'}, {x: 'b', y: 'b'}, {x: 'c', y: 'c'}]
 
-// sort by the returned value
+// Sort by the returned value
 sortOn([{x: 'b'}, {x: 'a'}, {x: 'c'}], el => el.x);
 //=> [{x: 'a'}, {x: 'b'}, {x: 'c'}]
 ```
@@ -43,17 +43,19 @@ sortOn([{x: 'b'}, {x: 'a'}, {x: 'c'}], el => el.x);
 
 ## API
 
-### sortOn(input, property)
+### sortOn(array, property)
 
-Returns a new sorted array.
+Returns a new sorted version of the given array.
 
-#### input
+#### array
 
-Type: `Array`
+Type: `unknown[]`
+
+The array to sort.
 
 #### property
 
-Type: `string` `string[]` `Function`
+Type: `string | string[] | Function`
 
 The string can be a [dot path](https://github.com/sindresorhus/dot-prop) to a nested object property. Prepend it with `-` to sort it in descending order.
 

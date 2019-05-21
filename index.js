@@ -4,61 +4,61 @@ const arrify = require('arrify');
 
 const dotPropGet = dotProp.get;
 
-module.exports = (arr, prop) => {
-	if (!Array.isArray(arr)) {
-		throw new TypeError('Expected an array');
+module.exports = (array, property) => {
+	if (!Array.isArray(array)) {
+		throw new TypeError(`Expected type \`Array\`, got \`${typeof array}\``);
 	}
 
-	return arr.slice().sort((a, b) => {
-		let ret = 0;
+	return array.slice().sort((a, b) => {
+		let returnValue = 0;
 
-		arrify(prop).some(el => {
+		arrify(property).some(element => {
+			let isDescending;
 			let x;
 			let y;
-			let desc;
 
-			if (typeof el === 'function') {
-				x = el(a);
-				y = el(b);
-			} else if (typeof el === 'string') {
-				desc = el.charAt(0) === '-';
-				el = desc ? el.slice(1) : el;
-				x = dotPropGet(a, el);
-				y = dotPropGet(b, el);
+			if (typeof element === 'function') {
+				x = element(a);
+				y = element(b);
+			} else if (typeof element === 'string') {
+				isDescending = element.charAt(0) === '-';
+				element = isDescending ? element.slice(1) : element;
+				x = dotPropGet(a, element);
+				y = dotPropGet(b, element);
 			} else {
 				x = a;
 				y = b;
 			}
 
 			if (x === y) {
-				ret = 0;
+				returnValue = 0;
 				return false;
 			}
 
 			if (y !== 0 && !y) {
-				ret = desc ? 1 : -1;
+				returnValue = isDescending ? 1 : -1;
 				return true;
 			}
 
 			if (x !== 0 && !x) {
-				ret = desc ? -1 : 1;
+				returnValue = isDescending ? -1 : 1;
 				return true;
 			}
 
 			if (typeof x === 'string' && typeof y === 'string') {
-				ret = desc ? y.localeCompare(x) : x.localeCompare(y);
-				return ret !== 0;
+				returnValue = isDescending ? y.localeCompare(x) : x.localeCompare(y);
+				return returnValue !== 0;
 			}
 
-			if (desc) {
-				ret = x < y ? 1 : -1;
+			if (isDescending) {
+				returnValue = x < y ? 1 : -1;
 			} else {
-				ret = x < y ? -1 : 1;
+				returnValue = x < y ? -1 : 1;
 			}
 
 			return true;
 		});
 
-		return ret;
+		return returnValue;
 	});
 };
