@@ -31,7 +31,7 @@ sortOn([{x: {y: 'b'}}, {x: {y: 'a'}}], 'x.y');
 sortOn([{x: {y: 'b'}}, {x: {y: 'a'}}], '-x.y');
 //=> [{x: {y: 'b'}, {x: {y: 'a'}}}]
 
-// Sort by the `x` propery, then `y`
+// Sort by the `x` property, then `y`
 sortOn([{x: 'c', y: 'c'}, {x: 'b', y: 'a'}, {x: 'b', y: 'b'}], ['x', 'y']);
 //=> [{x: 'b', y: 'a'}, {x: 'b', y: 'b'}, {x: 'c', y: 'c'}]
 
