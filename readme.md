@@ -1,4 +1,4 @@
-# sort-on [![Build Status](https://travis-ci.org/sindresorhus/sort-on.svg?branch=master)](https://travis-ci.org/sindresorhus/sort-on)
+# sort-on
 
 > Sort an array on an object property
 
