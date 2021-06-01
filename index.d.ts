@@ -1,5 +1,5 @@
 declare namespace sortOn {
-	type Property<T> = string | string[] | ((element: T) => unknown) | ((element: T) => unknown)[];
+	type Property<T> = string | ((element: T) => unknown) | (string | ((element: T) => unknown))[];
 }
 
 /**

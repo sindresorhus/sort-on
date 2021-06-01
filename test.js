@@ -73,6 +73,16 @@ test('main', t => {
 		prop => prop.bar
 	])[0].bar, 2);
 
+	t.is(sortOn([
+		{foo: 2, bar: 1},
+		{foo: 1, bar: 2},
+		{foo: 1, bar: 3},
+		{foo: 3, bar: 3}
+	], [
+		prop => prop.foo,
+		'bar'
+	])[0].bar, 2);
+
 	const sorted = sortOn([
 		{bar: 'b'},
 		{foo: 'b'},
