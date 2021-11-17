@@ -1,18 +1,16 @@
-'use strict';
-const dotProp = require('dot-prop');
-const arrify = require('arrify');
+import dotProp from 'dot-prop';
 
-const dotPropGet = dotProp.get;
+const {get: dotPropGet} = dotProp;
 
-module.exports = (array, property) => {
+export default function sortOn(array, property) {
 	if (!Array.isArray(array)) {
 		throw new TypeError(`Expected type \`Array\`, got \`${typeof array}\``);
 	}
 
-	return array.slice().sort((a, b) => {
+	return [...array].sort((a, b) => {
 		let returnValue = 0;
 
-		arrify(property).some(element => {
+		[property].flat().some(element => {
 			let isDescending;
 			let x;
 			let y;
@@ -61,4 +59,4 @@ module.exports = (array, property) => {
 
 		return returnValue;
 	});
-};
+}

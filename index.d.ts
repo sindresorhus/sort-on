@@ -1,17 +1,15 @@
-declare namespace sortOn {
-	type Property<T> = string | ((element: T) => unknown) | (string | ((element: T) => unknown))[];
-}
+export type Property<T> = string | ((element: T) => unknown) | Array<string | ((element: T) => unknown)>;
 
 /**
 Sort an array on an object property.
 
 @param array - The array to sort.
-@param property - The string can be a [dot path](https://github.com/sindresorhus/dot-prop) to a nested object property. Prepend it with `-` to sort it in descending order.
+@param property - The string can be a [dot path](https://github.com/sindresorhus/dot-prop) to a nested object property. Prefix it with `-` to sort it in descending order.
 @returns A new sorted version of the given array.
 
 @example
 ```
-import sortOn = require('sort-on');
+import sortOn from 'sort-on';
 
 // Sort by an object property
 sortOn([{x: 'b'}, {x: 'a'}, {x: 'c'}], 'x');
@@ -38,6 +36,4 @@ sortOn([{x: 'b'}, {x: 'a'}, {x: 'c'}], el => el.x);
 //=> [{x: 'a'}, {x: 'b'}, {x: 'c'}]
 ```
 */
-declare function sortOn<T>(array: readonly T[], property: sortOn.Property<T>): T[];
-
-export = sortOn;
+export default function sortOn<T>(array: readonly T[], property: Property<T>): T[];

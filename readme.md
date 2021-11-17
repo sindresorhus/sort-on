@@ -2,18 +2,16 @@
 
 > Sort an array on an object property
 
-
 ## Install
 
+```sh
+npm install sort-on
 ```
-$ npm install sort-on
-```
-
 
 ## Usage
 
 ```js
-const sortOn = require('sort-on');
+import sortOn from 'sort-on';
 
 // Sort by an object property
 sortOn([{x: 'b'}, {x: 'a'}, {x: 'c'}], 'x');
@@ -36,10 +34,9 @@ sortOn([{x: 'c', y: 'c'}, {x: 'b', y: 'a'}, {x: 'b', y: 'b'}], ['x', 'y']);
 //=> [{x: 'b', y: 'a'}, {x: 'b', y: 'b'}, {x: 'c', y: 'c'}]
 
 // Sort by the returned value
-sortOn([{x: 'b'}, {x: 'a'}, {x: 'c'}], el => el.x);
+sortOn([{x: 'b'}, {x: 'a'}, {x: 'c'}], element => element.x);
 //=> [{x: 'a'}, {x: 'b'}, {x: 'c'}]
 ```
-
 
 ## API
 
@@ -57,9 +54,6 @@ The array to sort.
 
 Type: `string | string[] | Function`
 
-The string can be a [dot path](https://github.com/sindresorhus/dot-prop) to a nested object property. Prepend it with `-` to sort it in descending order.
+The string can be a [dot path](https://github.com/sindresorhus/dot-prop) to a nested object property.
 
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)
+Prefix it with `-` to sort it in descending order.
