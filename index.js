@@ -1,6 +1,4 @@
-import dotProp from 'dot-prop';
-
-const {get: dotPropGet} = dotProp;
+import {getProperty} from 'dot-prop';
 
 export default function sortOn(array, property) {
 	if (!Array.isArray(array)) {
@@ -21,8 +19,8 @@ export default function sortOn(array, property) {
 			} else if (typeof element === 'string') {
 				isDescending = element.charAt(0) === '-';
 				element = isDescending ? element.slice(1) : element;
-				x = dotPropGet(a, element);
-				y = dotPropGet(b, element);
+				x = getProperty(a, element);
+				y = getProperty(b, element);
 			} else {
 				x = a;
 				y = b;
