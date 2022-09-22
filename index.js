@@ -1,12 +1,9 @@
 import {getProperty} from 'dot-prop';
 
-export default function sortOn(array, property, options) {
+export default function sortOn(array, property, {locales, localeOptions} = {}) {
 	if (!Array.isArray(array)) {
 		throw new TypeError(`Expected type \`Array\`, got \`${typeof array}\``);
 	}
-
-	const locales = (options && options.locales) || undefined;
-	const localeOptions = (options && options.localeOptions) || undefined;
 
 	return [...array].sort((a, b) => {
 		let returnValue = 0;
