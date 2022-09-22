@@ -1,5 +1,5 @@
-import test from 'ava';
 import process from 'node:process';
+import test from 'ava';
 import sortOn from './index.js';
 
 test('main', t => {
