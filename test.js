@@ -1,4 +1,5 @@
 import test from 'ava';
+import process from 'node:process';
 import sortOn from './index.js';
 
 test('main', t => {
@@ -154,17 +155,20 @@ test('main', t => {
 		{foo: 2},
 	], 'foo')[0].foo, 0);
 
-	t.deepEqual(sortOn([
-		{foo: 'g'},
-		{foo: 'ä'},
-		{foo: 'x'},
-		{foo: 'a'},
-	], 'foo', {locales: 'sv-SE'}), [
-		{foo: 'a'},
-		{foo: 'g'},
-		{foo: 'x'},
-		{foo: 'ä'},
-	]);
+	// Node v12 doesn't ship with full Intl support
+	if (!process.version.startsWith('v12.')) {
+		t.deepEqual(sortOn([
+			{foo: 'g'},
+			{foo: 'ä'},
+			{foo: 'x'},
+			{foo: 'a'},
+		], 'foo', {locales: 'sv-SE'}), [
+			{foo: 'a'},
+			{foo: 'g'},
+			{foo: 'x'},
+			{foo: 'ä'},
+		]);
+	}
 
 	t.deepEqual(sortOn([
 		{foo: 'a1'},
