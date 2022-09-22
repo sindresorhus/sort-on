@@ -153,4 +153,32 @@ test('main', t => {
 		{foo: 0},
 		{foo: 2},
 	], 'foo')[0].foo, 0);
+
+	t.deepEqual(sortOn([
+		{foo: 'g'},
+		{foo: 'ä'},
+		{foo: 'x'},
+		{foo: 'a'},
+	], 'foo', {locales: 'sv-SE'}), [
+		{foo: 'a'},
+		{foo: 'g'},
+		{foo: 'x'},
+		{foo: 'ä'},
+	]);
+
+	t.deepEqual(sortOn([
+		{foo: 'a1'},
+		{foo: 'a10'},
+		{foo: 'a11'},
+		{foo: 'a2'},
+		{foo: 'a25'},
+		{foo: 'a3'},
+	], 'foo', {localeOptions: {numeric: true}}), [
+		{foo: 'a1'},
+		{foo: 'a2'},
+		{foo: 'a3'},
+		{foo: 'a10'},
+		{foo: 'a11'},
+		{foo: 'a25'},
+	]);
 });
