@@ -10,12 +10,12 @@ export type Options = {
 
 	If you omit this parameter, the default locale of the JavaScript runtime is used.
 
-	This parameter must conform to BCP 47 standards; see the Intl.Collator object for details.
+	This parameter must conform to BCP 47 standards; see the {@link Intl.Collator} object for details.
 	*/
 	locales?: string | string[];
 
 	/**
-	An object that contains one or more properties that specify comparison options. see the Intl.Collator object for details.
+	An object that contains one or more properties that specify comparison options. see the {@link Intl.Collator} object for details.
 	*/
 	localeOptions?: Intl.CollatorOptions;
 };
