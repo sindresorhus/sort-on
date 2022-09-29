@@ -74,10 +74,10 @@ If you include more than one locale string, list them in descending order of pri
 
 If you omit this parameter, the default locale of the JavaScript runtime is used.
 
-This parameter must conform to BCP 47 standards; see the Intl.Collator object for details.
+This parameter must conform to BCP 47 standards. See [`Intl.Collator`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator) for more details.
 
 ##### localeOptions
 
-Type: `Intl.CollatorOptions`
+Type: [`Intl.CollatorOptions`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator#options)
 
-An object that contains one or more properties that specify comparison options. see the [`Intl.Collator`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator) object for details.
+Comparison options.
