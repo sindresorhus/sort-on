@@ -16,7 +16,7 @@ export type Options = {
 
 	/**
 	Comparison options.
-	
+
 	See {@link Intl.Collator} for more details.
 	*/
 	readonly localeOptions?: Intl.CollatorOptions;
