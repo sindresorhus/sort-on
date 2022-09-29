@@ -64,15 +64,14 @@ Type: `object`
 
 ##### locales
 
-Type: `string | string[]`
+Type: `string | string[]`\
+Default: The default locale of the JavaScript runtime.
 
 One or more locales to use when sorting strings.
 
 Should be a locale string or array of locale strings that contain one or more language or locale tags.
 
 If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale.
-
-If you omit this parameter, the default locale of the JavaScript runtime is used.
 
 This parameter must conform to BCP 47 standards. See [`Intl.Collator`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator) for more details.
 
