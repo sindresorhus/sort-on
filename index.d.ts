@@ -15,7 +15,7 @@ export type Options = {
 	locales?: string | string[];
 
 	/**
-	An object that contains one or more properties that specify comparison options. see the {@link Intl.Collator} object for details.
+	An object that contains one or more properties that specify comparison options. See the {@link Intl.Collator} object for details.
 	*/
 	localeOptions?: Intl.CollatorOptions;
 };
