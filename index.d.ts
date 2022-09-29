@@ -2,7 +2,7 @@ export type Property<T> = string | ((element: T) => unknown) | Array<string | ((
 
 export type Options = {
 	/**
-	Locale(s) to use when sorting strings.
+	One or more locales to use when sorting strings.
 
 	Should be a locale string or array of locale strings that contain one or more language or locale tags.
 
@@ -10,12 +10,14 @@ export type Options = {
 
 	If you omit this parameter, the default locale of the JavaScript runtime is used.
 
-	This parameter must conform to BCP 47 standards; see the {@link Intl.Collator} object for details.
+	This parameter must conform to BCP 47 standards. See {@link Intl.Collator} for more details.
 	*/
 	locales?: string | string[];
 
 	/**
-	An object that contains one or more properties that specify comparison options. See the {@link Intl.Collator} object for details.
+	Comparison options.
+	
+	See {@link Intl.Collator} for more details.
 	*/
 	localeOptions?: Intl.CollatorOptions;
 };
