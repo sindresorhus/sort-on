@@ -66,7 +66,7 @@ Type: `object`
 
 Type: `string | string[]`
 
-Locale(s) to use when sorting strings.
+One or more locales to use when sorting strings.
 
 Should be a locale string or array of locale strings that contain one or more language or locale tags.
 
