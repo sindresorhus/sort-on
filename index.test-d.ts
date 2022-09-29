@@ -13,3 +13,9 @@ const property: Property<string> = string => string;
 expectType<string>(sortOn(['a', 'bb', 'ccc'], property)[0]);
 
 sortOn(['a', 'bb', 'ccc'] as const, 'length');
+
+sortOn([{x: 'b'}, {x: 'a'}, {x: 'c'}], 'x', {locales: 'en'});
+sortOn([{x: 'b'}, {x: 'a'}, {x: 'c'}], 'x', {localeOptions: {numeric: true}});
+
+declare const localeOptions: Intl.CollatorOptions;
+sortOn([{x: 'b'}, {x: 'a'}, {x: 'c'}], 'x', {localeOptions});

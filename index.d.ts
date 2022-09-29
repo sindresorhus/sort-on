@@ -1,5 +1,27 @@
 export type Property<T> = string | ((element: T) => unknown) | Array<string | ((element: T) => unknown)>;
 
+export type Options = {
+	/**
+	One or more locales to use when sorting strings.
+
+	Should be a locale string or array of locale strings that contain one or more language or locale tags.
+
+	If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale.
+
+	If you omit this parameter, the default locale of the JavaScript runtime is used.
+
+	This parameter must conform to BCP 47 standards. See {@link Intl.Collator} for more details.
+	*/
+	readonly locales?: string | readonly string[];
+
+	/**
+	Comparison options.
+
+	See {@link Intl.Collator} for more details.
+	*/
+	readonly localeOptions?: Intl.CollatorOptions;
+};
+
 /**
 Sort an array on an object property.
 
@@ -36,4 +58,4 @@ sortOn([{x: 'b'}, {x: 'a'}, {x: 'c'}], el => el.x);
 //=> [{x: 'a'}, {x: 'b'}, {x: 'c'}]
 ```
 */
-export default function sortOn<T>(array: readonly T[], property: Property<T>): T[];
+export default function sortOn<T>(array: readonly T[], property: Property<T>, options?: Options): T[];
