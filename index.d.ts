@@ -12,14 +12,14 @@ export type Options = {
 
 	This parameter must conform to BCP 47 standards. See {@link Intl.Collator} for more details.
 	*/
-	locales?: string | string[];
+	readonly locales?: string | readonly string[];
 
 	/**
 	Comparison options.
 	
 	See {@link Intl.Collator} for more details.
 	*/
-	localeOptions?: Intl.CollatorOptions;
+	readonly localeOptions?: Intl.CollatorOptions;
 };
 
 /**
