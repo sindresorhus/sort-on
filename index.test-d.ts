@@ -1,5 +1,5 @@
 import {expectType} from 'tsd';
-import sortOn, {Property} from './index.js';
+import sortOn, {type Property} from './index.js';
 
 expectType<string>(sortOn([{x: 'b'}, {x: 'a'}, {x: 'c'}], 'x')[0].x);
 expectType<any>(sortOn<any>([{x: 'b'}, {x: 'a'}, {x: 'c'}], 'x')[0].x);
