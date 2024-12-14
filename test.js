@@ -140,13 +140,13 @@ test('main', t => {
 		{foo: 'a'},
 		{foo: ''},
 		{foo: 'b'},
-	], 'foo')[2].foo, '');
+	], 'foo')[2].foo, 'b');
 
 	t.is(sortOn([
 		{foo: 'a'},
 		{foo: ''},
 		{foo: 'b'},
-	], '-foo')[0].foo, '');
+	], '-foo')[0].foo, 'b');
 
 	t.is(sortOn([
 		{foo: 1},
@@ -181,4 +181,20 @@ test('main', t => {
 		{foo: 'a11'},
 		{foo: 'a25'},
 	]);
+	t.is(sortOn([
+		{foo: false},
+		{foo: true},
+	], 'foo')[0].foo, false);
+	t.is(sortOn([
+		{foo: '1'},
+		{foo: '10'},
+		{foo: '2'},
+		{foo: '11'},
+	], 'foo')[0].foo, '1');
+	t.is(sortOn([
+		{foo: '1'},
+		{foo: '10'},
+		{foo: '2'},
+		{foo: '11'},
+	], '-foo')[0].foo, '11');
 });
