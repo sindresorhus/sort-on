@@ -1,5 +1,61 @@
 import {getProperty} from 'dot-prop';
 
+function convertNumericStrings(x, y) {
+	const isXNumeric = typeof x === 'string' && x.trim() !== '' && !Number.isNaN(Number(x));
+	const isYNumeric = typeof y === 'string' && y.trim() !== '' && !Number.isNaN(Number(y));
+
+	if (isXNumeric && isYNumeric) {
+		return [Number(x), Number(y)];
+	}
+
+	return [x, y];
+}
+
+function compareBooleans(x, y, isDescending) {
+	if (typeof x === 'boolean' && typeof y === 'boolean') {
+		if (x === y) {
+			return 0;
+		}
+
+		// False should come before true in ascending. For descending, reverse it.
+		return isDescending ? (x < y ? 1 : -1) : (x < y ? -1 : 1);
+	}
+}
+
+function compareStrings(x, y, isDescending, options = {}) {
+	const {locales, localeOptions} = options;
+
+	if (typeof x === 'string' && typeof y === 'string') {
+		return isDescending
+			? y.localeCompare(x, locales, localeOptions)
+			: x.localeCompare(y, locales, localeOptions);
+	}
+}
+
+// Modified logic for null/undefined
+function compareValues(x, y, isDescending) {
+	if (x === y) {
+		return 0;
+	}
+
+	// If y is null/undefined but x is not:
+	// Ascending: null should appear at the end, so x < y means return -1
+	// Descending: null should appear at the start, so x > y means return 1
+	if (y !== 0 && !y) {
+		return isDescending ? 1 : -1;
+	}
+
+	// If x is null/undefined but y is not:
+	// Ascending: null at the end means x > y, so return 1
+	// Descending: null at the start means x < y, so return -1
+	if (x !== 0 && !x) {
+		return isDescending ? -1 : 1;
+	}
+
+	// Normal comparison for non-null values
+	return isDescending ? (x < y ? 1 : -1) : (x < y ? -1 : 1);
+}
+
 export default function sortOn(array, property, {locales, localeOptions} = {}) {
 	if (!Array.isArray(array)) {
 		throw new TypeError(`Expected type \`Array\`, got \`${typeof array}\``);
@@ -9,7 +65,7 @@ export default function sortOn(array, property, {locales, localeOptions} = {}) {
 		let returnValue = 0;
 
 		[property].flat().some(element => {
-			let isDescending;
+			let isDescending = false;
 			let x;
 			let y;
 
@@ -26,33 +82,26 @@ export default function sortOn(array, property, {locales, localeOptions} = {}) {
 				y = b;
 			}
 
-			if (x === y) {
-				returnValue = 0;
-				return false;
+			[x, y] = convertNumericStrings(x, y);
+
+			const booleanComparison = compareBooleans(x, y, isDescending);
+			if (booleanComparison !== undefined) {
+				returnValue = booleanComparison;
+				return booleanComparison !== 0;
 			}
 
-			if (y !== 0 && !y) {
-				returnValue = isDescending ? 1 : -1;
-				return true;
+			if (returnValue === 0) {
+				const stringComparison = compareStrings(x, y, isDescending, {locales, localeOptions});
+				if (stringComparison !== undefined) {
+					returnValue = stringComparison;
+				}
 			}
 
-			if (x !== 0 && !x) {
-				returnValue = isDescending ? -1 : 1;
-				return true;
+			if (returnValue === 0) {
+				returnValue = compareValues(x, y, isDescending);
 			}
 
-			if (typeof x === 'string' && typeof y === 'string') {
-				returnValue = isDescending ? y.localeCompare(x, locales, localeOptions) : x.localeCompare(y, locales, localeOptions);
-				return returnValue !== 0;
-			}
-
-			if (isDescending) {
-				returnValue = x < y ? 1 : -1;
-			} else {
-				returnValue = x < y ? -1 : 1;
-			}
-
-			return true;
+			return returnValue !== 0;
 		});
 
 		return returnValue;
