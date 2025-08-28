@@ -181,4 +181,28 @@ test('main', t => {
 		{foo: 'a11'},
 		{foo: 'a25'},
 	]);
+
+	t.deepEqual(sortOn([
+		{foo: 2n},
+		{foo: 0n},
+		{foo: 3n},
+		{foo: 1n},
+	], 'foo'), [
+		{foo: 0n},
+		{foo: 1n},
+		{foo: 2n},
+		{foo: 3n},
+	]);
+
+	t.deepEqual(sortOn([
+		{foo: 2n},
+		{foo: 0n},
+		{foo: 3n},
+		{foo: 1n},
+	], '-foo'), [
+		{foo: 3n},
+		{foo: 2n},
+		{foo: 1n},
+		{foo: 0n},
+	]);
 });
