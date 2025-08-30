@@ -27,7 +27,7 @@ sortOn([{x: {y: 'b'}}, {x: {y: 'a'}}], 'x.y');
 
 // Sort descending by a nested object property
 sortOn([{x: {y: 'b'}}, {x: {y: 'a'}}], '-x.y');
-//=> [{x: {y: 'b'}, {x: {y: 'a'}}}]
+//=> [{x: {y: 'b'}}, {x: {y: 'a'}}]
 
 // Sort by the `x` property, then `y`
 sortOn([{x: 'c', y: 'c'}, {x: 'b', y: 'a'}, {x: 'b', y: 'b'}], ['x', 'y']);
