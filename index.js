@@ -31,6 +31,11 @@ export default function sortOn(array, property, {locales, localeOptions} = {}) {
 				return false;
 			}
 
+			if (typeof x === 'bigint' && typeof y === 'bigint') {
+				returnValue = isDescending ? (x < y ? 1 : -1) : (x < y ? -1 : 1);
+				return returnValue !== 0;
+			}
+
 			if (y !== 0 && !y) {
 				returnValue = isDescending ? 1 : -1;
 				return true;
